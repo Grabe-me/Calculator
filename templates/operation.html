@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+{% extends "base.html" %}
+{% block content %}
+    <div>
+        <p>Возможные варианты ввода:</p>
+        <p>a + b  |  a - b  |  a * b  |  a / b</p>
+    </div>
+    <div>
+        <form action="{% url 'operation' %}" method='post'>
+            {% csrf_token %}
+            {{ form.as_p }}
+        <button name="submit">Get result</button>
+        </form>
+    </div>
+    <div>{{input_error}}</div>
+{% endblock content %}
+</body>
+</html>
